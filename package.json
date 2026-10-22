@@ -1,0 +1,28 @@
+{
+  "name": "boardview-automation",
+  "version": "1.0.0",
+  "description": "Playwright Automation Suite",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:ui": "npx playwright test --ui",
+    "test:headed": "npx playwright test --headed",
+    "test:assignment": "npx playwright test tests/assignment/assignment.spec.js --headed",
+    "test:login": "npx playwright test tests/Login/login.spec.js --headed",
+    "test:menu": "npx playwright test tests/menu/menu.spec.js --headed",
+    "test:group": "npx playwright test tests/group/group.spec.js --headed",
+    "test:debug": "npx playwright test --debug",
+    "report": "npx playwright show-report"
+  },
+  "keywords": [
+    "playwright",
+    "automation",
+    "testing"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.48.0",
+    "dotenv": "^16.4.5"
+  }
+}
