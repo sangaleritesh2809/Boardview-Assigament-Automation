@@ -70,15 +70,13 @@ class AssignmentPage {
       page.locator('button, a, div, span').filter({ hasText: /^My Assignments$/i })
     ).first();
 
-    // साइडबारमधील "View Submitted Assignments": id="assignment-view" किंवा complementary मधील View Submitted Assignments
+    // साइडबारमधील "View Submitted Assignments": id="assignment-view" किंवा data-testid="assignment-view"
     this.viewSubmittedAssignmentsSidebarItem = page.locator(
-      '#assignment-view, [id="assignment-view"], button#assignment-view, a#assignment-view'
+      '#assignment-view, [data-testid="assignment-view"], [id="assignment-view"]'
     ).or(
-      page.getByRole('complementary').getByText(/View Submitted Assign/i)
+      page.getByTestId('assignment-view')
     ).or(
-      page.locator('.w-full.min-w-0.block.truncate, [class*="w-full min-w-0 block truncate"]').filter({ hasText: /View Submitted/i })
-    ).or(
-      page.locator('button, a, div, span').filter({ hasText: /View Submitted Assig/i })
+      page.locator('.w-full.min-w-0.block.truncate').filter({ hasText: /View Submitted/i })
     ).first();
 
     // ८. Assignment Submit बटण: id="assignment-submit-a4ca5c22-99e1-46db-9a97-0d0cefed0915" किंवा इतर Submit बटणे
@@ -159,12 +157,10 @@ class AssignmentPage {
    * साइडबारमधील "View Submitted Assignments" बटणावर (id="assignment-view") क्लिक करून ते ओपन करणे
    */
   async clickViewSubmittedAssignments() {
-    console.log('🖱️ Clicking button id="assignment-view" to open View Submitted Assignments...');
+    console.log('🖱️ Clicking button id="assignment-view" (data-testid="assignment-view") to open View Submitted Assignments...');
     
-    // १. id="assignment-view" बटण शोधणे (किंवा class="w-full min-w-0 block truncate" मधील 'View Submitted Ass...')
-    const viewButton = this.page.locator('#assignment-view, [id="assignment-view"]').or(
-      this.page.locator('.w-full.min-w-0.block.truncate, [class*="w-full min-w-0 block truncate"]').filter({ hasText: /View Submitted/i })
-    ).or(
+    // १. id="assignment-view" किंवा data-testid="assignment-view" शोधणे
+    const viewButton = this.page.locator('#assignment-view, [data-testid="assignment-view"]').or(
       this.viewSubmittedAssignmentsSidebarItem
     ).first();
 

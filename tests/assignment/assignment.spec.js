@@ -64,7 +64,15 @@ test.describe('BoardView QA - School Management Assignment Module Tests', () => 
     await assignmentPage.clickCancel();
   });
 
-  // ३. पॉझिटिव्ह टेस्ट केस (शेवटी): संपूर्ण यशस्वी असाइनमेंट तयार, सबमिट आणि व्ह्यू करणे
+  // ३. View Submitted Assignments (id="assignment-view") बटणावर थेट क्लिक करणे
+  test('View Submitted Assignments: Verify clicking button id="assignment-view" opens View Submitted Assignments', async ({ page }) => {
+    console.log('📌 Clicking View Submitted Assignments button (id="assignment-view")...');
+    await assignmentPage.clickViewSubmittedAssignments();
+    expect(page.url()).toContain('assignment-view');
+    console.log('✅ Successfully clicked id="assignment-view" and opened View Submitted Assignments!');
+  });
+
+  // ४. पॉझिटिव्ह टेस्ट केस (शेवटी): संपूर्ण यशस्वी असाइनमेंट तयार, सबमिट आणि व्ह्यू करणे
   test('Positive Test: Complete Assignment Flow - Create, Submit with Note & Upload, and View', async ({ page }) => {
     console.log('📌 Running Positive Test: Complete assignment creation and submission flow...');
 
